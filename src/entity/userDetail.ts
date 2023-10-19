@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
-export class User {
+@Entity({database: 'test_exam'})
+export class UserDetail {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,5 +14,6 @@ export class User {
   @Column({
     nullable: true
   })
-  abcNumber: string
+  abcNumber: string;
+
 }

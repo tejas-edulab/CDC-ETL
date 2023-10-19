@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
-import { User } from "./entity/User";
+import { UserDetail } from "./entity/userDetail";
+import QueryLogger from "./entity/queryLogger";
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const SourceAppDataSource = new DataSource({
   username: process.env.SOURCE_MYSQL_USERNAME || "root",
   password: process.env.SOURCE_MYSQL_ROOT_PASSWORD || "root",
   database: process.env.SOURCE_MYSQL_DATABASE || "exam",
-  entities: [User],
+  entities: [QueryLogger],
   synchronize: true,
 });
 
@@ -22,8 +23,8 @@ const DestinationAppDataSource = new DataSource({
   port: Number(process.env.DESTINATION_MYSQL_PORT) || 3306,
   username: process.env.DESTINATION_MYSQL_USERNAME || "root",
   password: process.env.DESTINATION_MYSQL_ROOT_PASSWORD || "root",
-  database: process.env.DESTINATION_MYSQL_DATABASE || "exam",
-  entities: [User],
+  database: process.env.DESTINATION_MYSQL_DATABASE || "test_exam",
+  entities: [UserDetail],
   synchronize: true,
 });
 
