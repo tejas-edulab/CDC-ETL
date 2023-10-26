@@ -10,13 +10,12 @@ export default class QueryLogger {
 
     @Column({
         nullable: true,
-        type: 'longtext',
+        type: 'json',
     })
-    data: string;
+    data: { [key: string]:any } ;
 
     @Column({
         nullable: true,
-        type: 'longtext',
     })
     operation: string;
 

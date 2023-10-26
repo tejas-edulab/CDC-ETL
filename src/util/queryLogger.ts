@@ -5,7 +5,7 @@ const queryLoggerRepository = SourceAppDataSource.getRepository(QueryLogger);
 
 export default class QueryLoggerRepository{
     static getRecords = async () =>{
-        const data = await queryLoggerRepository.find({where:{isRead:false}, 
+        const data = await queryLoggerRepository.find({where:{isUpdated:false}, 
              order: {
             id: 'ASC', // or 'DESC' for descending order
           },})
@@ -14,9 +14,7 @@ export default class QueryLoggerRepository{
     }
 
     static updateQueryLogger = async (id:number, data:object) => {
-        console.log('11')
         const updated = await queryLoggerRepository.update({id}, data)
-        console.log('22')
         return updated;
     }
 }
